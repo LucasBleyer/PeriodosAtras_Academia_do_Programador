@@ -6,6 +6,8 @@ namespace PeriodosAtras.ConsoleApp
     {
         static void Main(string[] args)
         {
+            Notificador notificador = new Notificador();
+
             Console.WriteLine("Data de hoje: " + DateTime.Now.ToShortDateString());
 
             int dias, meses, anos;
@@ -23,16 +25,14 @@ namespace PeriodosAtras.ConsoleApp
                 meses = Convert.ToInt32(meses_array);
                 anos = Convert.ToInt32(anos_array);
 
-                if (dias <= 31 && meses <= 12 && anos <= 2022)
+                if (dias <= 31 && meses <= 12 && (anos > 1000 && anos <= 2022))
                 {
-                    Console.WriteLine("Data informada: {0}/{1}/{2}", dias, meses, anos);
+                    notificador.ApresentarMensagem("Data informada:" + dias + "/" + meses + "/" + anos, Notificador.TipoMensagem.Sucesso);
                     break;
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Formato incorreto, digite novamente...\n");
-                    Console.ResetColor();
+                    notificador.ApresentarMensagem("Formato incorreto, digite novamente!", Notificador.TipoMensagem.Erro);
                 }
             }
         }
