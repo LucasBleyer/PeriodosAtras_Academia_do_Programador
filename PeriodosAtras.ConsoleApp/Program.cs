@@ -6,7 +6,7 @@ namespace PeriodosAtras.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
